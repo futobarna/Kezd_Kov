@@ -1,4 +1,4 @@
-package com.z80h3x.kezd_kov.ui.blank
+package com.z80h3x.kezd_kov.ui.initiative_list
 
 import android.os.Bundle
 import android.view.View
@@ -6,10 +6,10 @@ import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import com.z80h3x.kezd_kov.R
 
-class BlankFragment : RainbowCakeFragment<BlankViewState, BlankViewModel>() {
+class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewModel>() {
 
     override fun provideViewModel() = getViewModelFromFactory()
-    override fun getViewResource() = R.layout.fragment_blank
+    override fun getViewResource() = R.layout.fragment_init_list
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,7 +23,7 @@ class BlankFragment : RainbowCakeFragment<BlankViewState, BlankViewModel>() {
         viewModel.load()
     }
 
-    override fun render(viewState: BlankViewState) {
+    override fun render(viewState: InitListViewState) {
         // TODO Render state
     }
 
