@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/charDetailsFragment">
+
+    <fragment
+        android:id="@+id/charDetailsFragment"
+        android:name="com.z80h3x.kezd_kov.ui.char_details.CharDetailsFragment"
+        android:label="CharDetailsFragment" />
+    <fragment
+        android:id="@+id/initListFragment"
+        android:name="com.z80h3x.kezd_kov.ui.initiative_list.InitListFragment"
+        android:label="InitListFragment" >
+        <action
+            android:id="@+id/action_initListFragment_to_charDetailsFragment"
+            app:destination="@id/charDetailsFragment" />
+    </fragment>
+</navigation>

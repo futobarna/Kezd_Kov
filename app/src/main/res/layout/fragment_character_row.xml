@@ -5,15 +5,16 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    android:layout_margin="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_normal"
-        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginEnd="@dimen/margin_extra_small"
-        android:layout_marginBottom="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/margin_small"
         android:orientation="vertical">
 
         <TextView

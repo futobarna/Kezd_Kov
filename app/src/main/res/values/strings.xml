@@ -3,4 +3,7 @@
     <string name="next_turn">Next Turn</string>
     <string name="sort_list">Sort List</string>
     <string name="add_character">Add Character</string>
+    <string name="character_description">Character Description</string>
+    <string name="modifier_hint">+2</string>
+    <string name="initiative_hint">12</string>
 </resources>

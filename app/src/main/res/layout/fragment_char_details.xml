@@ -1,17 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/charDetailsFragmentRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/charDetailsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CharDetailsFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_large"
+        tools:text="Character Name"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/charDetailsDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_large"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/charDetailsName"
+        android:importantForAutofill="no"
+        android:hint="@string/character_description"/>
+
+    <EditText
+        android:id="@+id/charDetailsModifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:ems="2"
+        android:gravity="center"
+        android:inputType="numberSigned"
+        tools:text="+15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no"
+        android:hint="@string/modifier_hint"/>
+
+    <EditText
+        android:id="@+id/charDetailsInitiative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:ems="2"
+        android:gravity="center"
+        android:inputType="number"
+        tools:text="20"
+        app:layout_constraintEnd_toStartOf="@id/charDetailsModifier"
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no"
+        android:hint="@string/initiative_hint"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
