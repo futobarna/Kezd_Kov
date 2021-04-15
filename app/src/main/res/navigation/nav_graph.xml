@@ -6,7 +6,11 @@
     <fragment
         android:id="@+id/charDetailsFragment"
         android:name="com.z80h3x.kezd_kov.ui.char_details.CharDetailsFragment"
-        android:label="CharDetailsFragment" />
+        android:label="CharDetailsFragment" >
+        <action
+            android:id="@+id/action_charDetailsFragment_to_initListFragment"
+            app:destination="@id/initListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/initListFragment"
         android:name="com.z80h3x.kezd_kov.ui.initiative_list.InitListFragment"
@@ -14,5 +18,16 @@
         <action
             android:id="@+id/action_initListFragment_to_charDetailsFragment"
             app:destination="@id/charDetailsFragment" />
+        <action
+            android:id="@+id/action_initListFragment_to_addCharFragment"
+            app:destination="@id/addCharFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCharFragment"
+        android:name="com.z80h3x.kezd_kov.ui.add_char.AddCharFragment"
+        android:label="AddCharFragment" >
+        <action
+            android:id="@+id/action_addCharFragment_to_initListFragment"
+            app:destination="@id/initListFragment" />
     </fragment>
 </navigation>

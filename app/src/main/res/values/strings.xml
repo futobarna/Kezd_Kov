@@ -6,4 +6,15 @@
     <string name="character_description">Character Description</string>
     <string name="modifier_hint">+2</string>
     <string name="initiative_hint">12</string>
+    <string name="radio_button_default">Default</string>
+    <string name="radio_button_d_amp_d_api"><![CDATA[D&D API]]></string>
+    <string name="radio_button_cloud_character">Cloud Character</string>
+    <string name="addCharLabelName">Name:</string>
+    <string name="addCharLabelInitiative">Initiative:</string>
+    <string name="addCharLabelPriority">Priority:</string>
+    <string name="addCharHintName">Character Name</string>
+    <string name="addCharHintInitiative">Initiative</string>
+    <string name="addCharHintPriority">Priority</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonOk">OK</string>
 </resources>
