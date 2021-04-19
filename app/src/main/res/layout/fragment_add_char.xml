@@ -1,17 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/blankFragmentRoot"
+    android:id="@+id/addCharFragmentRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/addCharToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/addCharBackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+                android:contentDescription="@string/back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/char_details_toolbar_title"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="24sp"
+                android:layout_marginStart="@dimen/margin_normal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/addCharBackButton"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:checkedButton="@id/radioButtonDefault"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addCharToolbar">
+
+        <RadioButton
+            android:id="@+id/radioButtonDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_default" />
+
+        <RadioButton
+            android:id="@+id/radioButtonAPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_d_amp_d_api" />
+
+        <RadioButton
+            android:id="@+id/radioButtonCloud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_cloud_character" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/addCharName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AddCharFragment"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_extra_small"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCharTextName"
+        android:importantForAutofill="no"
+        android:hint="@string/addCharHintName"/>
+
+    <EditText
+        android:id="@+id/addCharInitiative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_extra_small"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCharTextInitiative"
+        android:importantForAutofill="no"
+        android:hint="@string/addCharHintInitiative"/>
+
+    <EditText
+        android:id="@+id/addCharPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_extra_small"
+        android:ems="10"
+        android:hint="@string/addCharHintPriority"
+        android:importantForAutofill="no"
+        android:inputType="numberSigned"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCharTextPriority" />
+
+    <TextView
+        android:id="@+id/addCharTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_large"
+        android:textSize="16sp"
+        android:text="@string/addCharLabelName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <TextView
+        android:id="@+id/addCharTextInitiative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:textSize="16sp"
+        android:text="@string/addCharLabelInitiative"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCharName" />
+
+    <TextView
+        android:id="@+id/addCharTextPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:textSize="16sp"
+        android:text="@string/addCharLabelPriority"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCharInitiative" />
+
+    <Button
+        android:id="@+id/addCharCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="174dp"
+        android:layout_marginEnd="@dimen/margin_extra_large"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:text="@string/buttonCancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCharPriority" />
+
+    <Button
+        android:id="@+id/addCharOkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_extra_large"
+        android:layout_marginTop="174dp"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:text="@string/buttonOk"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addCharPriority" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

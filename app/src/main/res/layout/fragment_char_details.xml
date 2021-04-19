@@ -1,17 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/charDetailsFragmentRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/charDetailsToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/charDetailsBackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+                android:contentDescription="@string/back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/char_details_toolbar_title"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="24sp"
+                android:layout_marginStart="@dimen/margin_normal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/charDetailsBackButton"
+                app:layout_constraintEnd_toStartOf="@id/charDetailsCloudButton"/>
+
+            <ImageButton
+                android:id="@+id/charDetailsCloudButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="@dimen/margin_normal"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_baseline_cloud_upload_24"
+                android:contentDescription="@string/cloud_upload" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
+        android:id="@+id/charDetailsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CharDetailsFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_large"
+        tools:text="Character Name"
+        android:text="@string/addCharHintName"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/charDetailsToolbar" />
+
+    <EditText
+        android:id="@+id/charDetailsDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_large"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/charDetailsName"
+        android:importantForAutofill="no"
+        android:hint="@string/character_description"/>
+
+    <EditText
+        android:id="@+id/charDetailsModifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:ems="2"
+        android:gravity="center"
+        android:inputType="numberSigned"
+        tools:text="+15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/charDetailsToolbar"
+        android:importantForAutofill="no"
+        android:hint="@string/modifier_hint"/>
+
+    <EditText
+        android:id="@+id/charDetailsInitiative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:ems="2"
+        android:gravity="center"
+        android:inputType="number"
+        tools:text="20"
+        app:layout_constraintEnd_toStartOf="@id/charDetailsModifier"
+        app:layout_constraintTop_toBottomOf="@id/charDetailsToolbar"
+        android:importantForAutofill="no"
+        android:hint="@string/initiative_hint"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
