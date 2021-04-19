@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/charDetailsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/initListFragment"
+    tools:keep="@navigation/nav_graph">
 
     <fragment
         android:id="@+id/charDetailsFragment"
         android:name="com.z80h3x.kezd_kov.ui.char_details.CharDetailsFragment"
+        tools:layout="@layout/fragment_char_details"
         android:label="CharDetailsFragment" >
         <action
             android:id="@+id/action_charDetailsFragment_to_initListFragment"
@@ -14,6 +18,7 @@
     <fragment
         android:id="@+id/initListFragment"
         android:name="com.z80h3x.kezd_kov.ui.initiative_list.InitListFragment"
+        tools:layout="@layout/fragment_init_list"
         android:label="InitListFragment" >
         <action
             android:id="@+id/action_initListFragment_to_charDetailsFragment"
@@ -25,6 +30,7 @@
     <fragment
         android:id="@+id/addCharFragment"
         android:name="com.z80h3x.kezd_kov.ui.add_char.AddCharFragment"
+        tools:layout="@layout/fragment_add_char"
         android:label="AddCharFragment" >
         <action
             android:id="@+id/action_addCharFragment_to_initListFragment"

@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
+import co.zsmb.rainbowcake.navigation.navigator
 import com.z80h3x.kezd_kov.R
+import kotlinx.android.synthetic.main.fragment_add_char.*
 
 class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>() {
 
@@ -14,7 +16,16 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO Setup views
+        setupButtons()
+    }
+
+    private fun setupButtons() {
+        addCharCancelButton.setOnClickListener {
+            navigator?.pop()
+        }
+        addCharBackButton.setOnClickListener {
+            navigator?.pop()
+        }
     }
 
     override fun onStart() {

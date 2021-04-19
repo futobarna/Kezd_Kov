@@ -17,4 +17,8 @@
     <string name="addCharHintPriority">Priority</string>
     <string name="buttonCancel">Cancel</string>
     <string name="buttonOk">OK</string>
+    <string name="init_list_toolbar_text">Turn Order</string>
+    <string name="char_details_toolbar_title">Character Details</string>
+    <string name="back">Back</string>
+    <string name="cloud_upload">Cloud Upload</string>
 </resources>
