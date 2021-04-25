@@ -5,10 +5,20 @@ import javax.inject.Inject
 
 class AddCharViewModel @Inject constructor(
     private val addCharPresenter: AddCharPresenter
-) : RainbowCakeViewModel<AddCharViewState>(Loading) {
+) : RainbowCakeViewModel<AddCharViewState>(Form) {
 
-    fun load() = execute {
-        viewState = AddCharReady(addCharPresenter.getData())
+    fun createCharacter(
+        name: String,
+        initiative: Int,
+        modifier: Int
+    ) = execute {
+        viewState = Loading
+        val id = addCharPresenter.createCharacter(name, initiative, modifier)
+        viewState = if (id != null){
+            AddCharReady(id)
+        } else {
+            CharacterFailed
+        }
     }
 
 }
