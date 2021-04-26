@@ -22,12 +22,12 @@ package com.z80h3x.kezd_kov.data.network.models
  * @param dc 
  */
 data class Action (
-        val name: String? = null,
-        val desc: String? = null,
-        val options: Any? = null,
-        val damage: Array<Any>? = null,
-        val attack_bonus: Int? = null,
-        val dc: Any? = null
+    val name: String? = null,
+    val desc: String? = null,
+    val options: Any? = null,
+    val damage: Array<Any>? = null,
+    val attack_bonus: Int? = null,
+    val dc: Any? = null
 ) {
 
 }

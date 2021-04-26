@@ -11,17 +11,16 @@
 */
 package com.z80h3x.kezd_kov.data.network.models
 
+import com.z80h3x.kezd_kov.data.network.models.Monster
 
 /**
  * 
- * @param code 
- * @param type 
- * @param message 
+ * @param count 
+ * @param results 
  */
-data class ApiResponse (
-    val code: Int? = null,
-    val type: String? = null,
-    val message: String? = null
+data class MonsterList (
+    val count: Int? = null,
+    val results: Array<Monster>? = null
 ) {
 
 }

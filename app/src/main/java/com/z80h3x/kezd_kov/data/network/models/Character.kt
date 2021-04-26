@@ -16,12 +16,12 @@ package com.z80h3x.kezd_kov.data.network.models
  * 
  * @param id 
  * @param name 
- * @param descrition 
+ * @param description
  */
 data class Character (
     val name: String,
     val id: Long? = null,
-    val descrition: String? = null
+    val description: String? = null
 ) {
 
 }
