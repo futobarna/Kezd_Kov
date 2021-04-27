@@ -7,7 +7,7 @@ class CharDetailsViewModel @Inject constructor(
     private val charDetailsPresenter: CharDetailsPresenter
 ) : RainbowCakeViewModel<CharDetailsViewState>(Loading) {
 
-    fun load(id: Int) = execute {
+    fun load(id: Long) = execute {
         viewState = CharDetailsReady(charDetailsPresenter.getCharacter(id))
     }
 

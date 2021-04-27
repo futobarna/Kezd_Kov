@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Character(
+data class RoomCharacter(
         @PrimaryKey(autoGenerate = true) val id : Long?,
         @ColumnInfo(name = "cloudId") val cloudId: Long?,
         @ColumnInfo(name = "name") val name: String,
