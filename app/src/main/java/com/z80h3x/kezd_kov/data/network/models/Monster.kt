@@ -30,8 +30,8 @@ package com.z80h3x.kezd_kov.data.network.models
  * @param intelligence 
  * @param wisdom 
  * @param charisma 
- * @param proficiences 
- * @param damage_vulnerabiliteis 
+ * @param proficiencies
+ * @param damage_vulnerabilities
  * @param damage_resistances 
  * @param damage_immunities 
  * @param condition_immunities 
@@ -61,8 +61,8 @@ data class Monster (
     val intelligence: Int? = null,
     val wisdom: Int? = null,
     val charisma: Int? = null,
-    val proficiences: Array<Proficiency>? = null,
-    val damage_vulnerabiliteis: Array<String>? = null,
+    val proficiencies: Array<Proficiency>? = null,
+    val damage_vulnerabilities: Array<String>? = null,
     val damage_resistances: Array<String>? = null,
     val damage_immunities: Array<String>? = null,
     val condition_immunities: Array<Condition>? = null,
