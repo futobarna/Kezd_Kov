@@ -8,7 +8,7 @@ class InitListViewModel @Inject constructor(
 ) : RainbowCakeViewModel<InitListViewState>(Loading) {
 
     fun load() = execute {
-        viewState = InitListReady(initListPresenter.getData())
+        viewState = InitListReady(initListPresenter.getCharacters())
     }
 
 }

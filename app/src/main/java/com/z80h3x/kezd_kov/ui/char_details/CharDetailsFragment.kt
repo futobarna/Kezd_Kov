@@ -29,7 +29,7 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
     override fun onStart() {
         super.onStart()
 
-        viewModel.load()
+        //viewModel.load()
     }
 
     override fun render(viewState: CharDetailsViewState) {

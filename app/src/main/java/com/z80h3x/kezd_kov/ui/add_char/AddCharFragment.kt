@@ -28,12 +28,6 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        viewModel.load()
-    }
-
     override fun render(viewState: AddCharViewState) {
         // TODO Render state
     }
