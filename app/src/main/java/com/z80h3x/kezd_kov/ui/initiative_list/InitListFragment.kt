@@ -10,10 +10,12 @@ import com.z80h3x.kezd_kov.ui.add_char.AddCharFragment
 import com.z80h3x.kezd_kov.ui.char_details.CharDetailsFragment
 import kotlinx.android.synthetic.main.fragment_init_list.*
 
-class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewModel>() {
+class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewModel>(), InitListAdapter.Listener {
 
     override fun provideViewModel() = getViewModelFromFactory()
     override fun getViewResource() = R.layout.fragment_init_list
+
+    private lateinit var adapter: InitListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,6 +34,12 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
         }
     }
 
+    private fun setupList() {
+        adapter = InitListAdapter(requireContext())
+        adapter.listener = this
+        recyclerView.adapter = adapter
+    }
+
     override fun onStart() {
         super.onStart()
 
@@ -39,7 +47,24 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
     }
 
     override fun render(viewState: InitListViewState) {
-        // TODO Render state
+        when (viewState) {
+            is InitListReady -> showInitListPage(viewState)
+            is Loading -> showLoading()
+        }
+    }
+
+    private fun showInitListPage(viewState: InitListReady) {
+        setupList()
+        initListProgressBar.visibility = View.GONE
+        adapter.submitList(viewState.characters)
+    }
+
+    private fun showLoading() {
+        initListProgressBar.visibility = View.VISIBLE
+    }
+
+    override fun onCharacterDelete(id: Long) {
+        TODO("Not yet implemented")
     }
 
 }

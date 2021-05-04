@@ -6,4 +6,5 @@
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_extra_large">64dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
+    <dimen name="progress_bar_size">200dp</dimen>
 </resources>
