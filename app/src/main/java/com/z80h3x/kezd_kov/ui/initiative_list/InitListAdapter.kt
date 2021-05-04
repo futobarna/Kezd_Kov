@@ -20,7 +20,7 @@ class InitListAdapter(
     var listener: Listener? = null
 
     interface Listener {
-        fun onCharacterDelete(id: Long)
+        fun onCharacterDelete(character: BaseCharacter)
     }
 
     override fun onCreateViewHolder(
@@ -46,12 +46,15 @@ class InitListAdapter(
 
         holder.characterInitative.text = item.initiative.toString()
 
+        holder.characterDelete.setOnClickListener {
+            listener?.onCharacterDelete(item)
+        }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val characterName: TextView = itemView.charListName
         val characterInitative: TextView = itemView.charListInitiative
-        val characterOptions: ImageView = itemView.moreIcon
+        val characterDelete: ImageView = itemView.deleteIcon
 
         var item: BaseCharacter? = null
     }

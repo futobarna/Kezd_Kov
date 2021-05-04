@@ -6,6 +6,7 @@ import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import co.zsmb.rainbowcake.navigation.navigator
 import com.z80h3x.kezd_kov.R
+import com.z80h3x.kezd_kov.data.generic.BaseCharacter
 import com.z80h3x.kezd_kov.ui.add_char.AddCharFragment
 import com.z80h3x.kezd_kov.ui.char_details.CharDetailsFragment
 import kotlinx.android.synthetic.main.fragment_init_list.*
@@ -63,8 +64,8 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
         initListProgressBar.visibility = View.VISIBLE
     }
 
-    override fun onCharacterDelete(id: Long) {
-        TODO("Not yet implemented")
+    override fun onCharacterDelete(character: BaseCharacter) {
+        viewModel.deleteCharacter(character)
     }
 
 }
