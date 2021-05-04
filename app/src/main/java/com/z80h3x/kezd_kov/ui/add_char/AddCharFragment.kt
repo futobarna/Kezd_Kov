@@ -26,10 +26,60 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
         addCharBackButton.setOnClickListener {
             navigator?.pop()
         }
+        addCharOkButton.setOnClickListener {
+            val charName: String = addCharName.text.toString().trim()
+            val initiativeString: String = addCharInitiative.text.toString().trim()
+            val priorityString: String = addCharPriority.text.toString().trim()
+            if (charName.isEmpty()) {
+                addCharName.error = getString(R.string.empty_character_name_error)
+                addCharName.requestFocus()
+                return@setOnClickListener
+            }
+            if (initiativeString.isEmpty() || initiativeString.toIntOrNull() == null) {
+                addCharInitiative.error = getString(R.string.invalid_number_field_error)
+                addCharInitiative.requestFocus()
+                return@setOnClickListener
+            }
+            if (priorityString.isEmpty() || priorityString.toIntOrNull() == null) {
+                addCharPriority.error = getString(R.string.invalid_number_field_error)
+                addCharPriority.requestFocus()
+                return@setOnClickListener
+            }
+
+            val initiative: Int = initiativeString.toInt()
+            val priority: Int = priorityString.toInt()
+
+            viewModel.createCharacter(charName, initiative, priority)
+        }
     }
 
     override fun render(viewState: AddCharViewState) {
-        // TODO Render state
+        when (viewState) {
+            is Form -> form()
+            is Loading -> loading()
+            is CharacterFailed -> characterFailed()
+            is AddCharReady -> characterReady()
+        }
+    }
+
+    private fun characterReady() {
+        addCharProgressBar.visibility = View.GONE
+        textViewCharacterFailed.visibility = View.GONE
+        navigator?.pop()
+    }
+
+    private fun characterFailed() {
+        addCharProgressBar.visibility = View.GONE
+        textViewCharacterFailed.visibility = View.VISIBLE
+    }
+
+    private fun form() {
+        addCharProgressBar.visibility = View.GONE
+        textViewCharacterFailed.visibility = View.GONE
+    }
+
+    private fun loading() {
+        addCharProgressBar.visibility = View.VISIBLE
     }
 
 }

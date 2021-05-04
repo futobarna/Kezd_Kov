@@ -21,4 +21,7 @@
     <string name="char_details_toolbar_title">Character Details</string>
     <string name="back">Back</string>
     <string name="cloud_upload">Cloud Upload</string>
+    <string name="empty_character_name_error">Write a character name</string>
+    <string name="invalid_number_field_error">Write a valid number</string>
+    <string name="add_char_fragment_something_went_wrong">Something went wrong, please try again</string>
 </resources>

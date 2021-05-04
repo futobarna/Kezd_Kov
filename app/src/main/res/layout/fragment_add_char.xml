@@ -75,9 +75,10 @@
 
     <EditText
         android:id="@+id/addCharName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_extra_small"
         android:ems="10"
         android:inputType="textPersonName"
@@ -88,28 +89,31 @@
 
     <EditText
         android:id="@+id/addCharInitiative"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_extra_small"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addCharPriority"
         app:layout_constraintTop_toBottomOf="@+id/addCharTextInitiative"
         android:importantForAutofill="no"
         android:hint="@string/addCharHintInitiative"/>
 
     <EditText
         android:id="@+id/addCharPriority"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_extra_small"
         android:ems="10"
         android:hint="@string/addCharHintPriority"
         android:importantForAutofill="no"
         android:inputType="numberSigned"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/addCharInitiative"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCharTextPriority" />
 
     <TextView
@@ -125,25 +129,28 @@
 
     <TextView
         android:id="@+id/addCharTextInitiative"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_normal"
         android:textSize="16sp"
         android:text="@string/addCharLabelInitiative"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addCharTextPriority"
         app:layout_constraintTop_toBottomOf="@+id/addCharName" />
 
     <TextView
         android:id="@+id/addCharTextPriority"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
         android:layout_marginTop="@dimen/margin_normal"
         android:textSize="16sp"
         android:text="@string/addCharLabelPriority"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCharInitiative" />
+        app:layout_constraintStart_toEndOf="@id/addCharTextInitiative"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCharName" />
 
     <Button
         android:id="@+id/addCharCancelButton"
@@ -154,8 +161,7 @@
         android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/buttonCancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCharPriority" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/addCharOkButton"
@@ -166,7 +172,32 @@
         android:layout_marginBottom="@dimen/margin_normal"
         android:text="@string/buttonOk"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCharacterFailed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:shadowColor="@color/colorAccent"
+        android:text="@string/add_char_fragment_something_went_wrong"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCharPriority" />
+
+    <ProgressBar
+        android:id="@+id/addCharProgressBar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:indeterminateTint="@color/lightGray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addCharPriority" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
