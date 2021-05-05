@@ -31,6 +31,7 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
     }
 
     private var characterId: Long = 0
+    private var cloudId: Long? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,16 +49,38 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
         charDetailsBackButton.setOnClickListener {
             navigator?.pop()
         }
+
     }
 
     override fun onStart() {
         super.onStart()
 
-        //viewModel.load()
+        viewModel.load(characterId)
     }
 
     override fun render(viewState: CharDetailsViewState) {
-        // TODO Render state
+        when (viewState) {
+            is CharDetailsReady -> showCharDetailsReady(viewState)
+            is Loading -> showLoading()
+        }
+    }
+
+    private fun showLoading() {
+        charDetailsProgressBar.visibility = View.VISIBLE
+        charDetailsSaveButton.visibility = View.GONE
+        charDetailsCloudButton.visibility = View.GONE
+    }
+
+    private fun showCharDetailsReady(viewState: CharDetailsReady) {
+        charDetailsProgressBar.visibility = View.GONE
+        charDetailsSaveButton.visibility = View.VISIBLE
+        charDetailsCloudButton.visibility = View.VISIBLE
+
+        charDetailsName.text = viewState.character.name
+        charDetailsInitiative.setText(viewState.character.initiative.toString())
+        charDetailsModifier.setText(viewState.character.modifier.toString())
+        charDetailsDescription.setText(viewState.character.description)
+        cloudId = viewState.character.cloudId
     }
 
 }
