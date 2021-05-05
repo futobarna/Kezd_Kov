@@ -8,12 +8,20 @@ class InitListViewModel @Inject constructor(
     private val initListPresenter: InitListPresenter
 ) : RainbowCakeViewModel<InitListViewState>(Loading) {
 
-    fun load() = execute {
-        viewState = InitListReady(initListPresenter.getCharacters())
+    fun load(orderDescending: Boolean) = execute {
+        val sortedList = if (orderDescending) initListPresenter.getCharacters().sortedWith(
+            compareBy<BaseCharacter> { it.initiative }
+                .thenBy { it.modifier }
+        ).reversed().toMutableList()
+        else initListPresenter.getCharacters().sortedWith(
+            compareBy<BaseCharacter> { it.initiative }
+                .thenBy { it.modifier }
+        ).toMutableList()
+        viewState = InitListReady(sortedList)
     }
 
-    fun deleteCharacter(character: BaseCharacter) = execute {
+    fun deleteCharacter(character: BaseCharacter, sortDescending: Boolean) = execute {
         initListPresenter.deleteCharacter(character)
-        load()
+        load(sortDescending)
     }
 }

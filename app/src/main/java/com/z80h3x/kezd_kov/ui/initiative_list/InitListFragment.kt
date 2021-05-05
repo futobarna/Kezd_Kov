@@ -18,6 +18,8 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
 
     private lateinit var adapter: InitListAdapter
 
+    private var sortDescending: Boolean = true
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -30,8 +32,11 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
             navigator?.add(AddCharFragment())
         }
         initListNextButton.setOnClickListener {
-            //TODO create actual functionality
-            navigator?.add(CharDetailsFragment())
+
+        }
+        initListSortButton.setOnClickListener {
+            sortDescending = !sortDescending
+            viewModel.load(sortDescending)
         }
     }
 
@@ -44,7 +49,7 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
     override fun onStart() {
         super.onStart()
 
-        viewModel.load()
+        viewModel.load(sortDescending)
     }
 
     override fun render(viewState: InitListViewState) {
@@ -65,7 +70,7 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
     }
 
     override fun onCharacterDelete(character: BaseCharacter) {
-        viewModel.deleteCharacter(character)
+        viewModel.deleteCharacter(character, sortDescending)
     }
 
 }
