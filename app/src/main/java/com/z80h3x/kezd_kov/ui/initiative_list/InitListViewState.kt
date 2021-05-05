@@ -7,4 +7,4 @@ sealed class InitListViewState
 
 object Loading : InitListViewState()
 
-data class InitListReady(val characters: MutableList<BaseCharacter>) : InitListViewState()
+data class InitListReady(val characters: List<BaseCharacter>) : InitListViewState()

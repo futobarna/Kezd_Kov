@@ -9,14 +9,15 @@ class InitListViewModel @Inject constructor(
 ) : RainbowCakeViewModel<InitListViewState>(Loading) {
 
     fun load(orderDescending: Boolean) = execute {
+        viewState = Loading
         val sortedList = if (orderDescending) initListPresenter.getCharacters().sortedWith(
             compareBy<BaseCharacter> { it.initiative }
                 .thenBy { it.modifier }
-        ).reversed().toMutableList()
+        ).reversed()
         else initListPresenter.getCharacters().sortedWith(
             compareBy<BaseCharacter> { it.initiative }
                 .thenBy { it.modifier }
-        ).toMutableList()
+        )
         viewState = InitListReady(sortedList)
     }
 

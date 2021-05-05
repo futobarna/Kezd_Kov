@@ -38,7 +38,6 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
         super.onViewCreated(view, savedInstanceState)
 
         initArguments()
-        // TODO Setup views
         setupButtons()
     }
 
