@@ -21,6 +21,7 @@ class InitListAdapter(
 
     interface Listener {
         fun onCharacterDelete(character: BaseCharacter)
+        fun onItemSelected(id: Long)
     }
 
     override fun onCreateViewHolder(
@@ -57,5 +58,13 @@ class InitListAdapter(
         val characterDelete: ImageView = itemView.deleteIcon
 
         var item: BaseCharacter? = null
+
+        init {
+            itemView.setOnClickListener {
+                item.let {
+                    listener?.onItemSelected(it?.id!!)
+                }
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@ package com.z80h3x.kezd_kov.ui.initiative_list
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import co.zsmb.rainbowcake.navigation.navigator
@@ -71,6 +73,10 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
 
     override fun onCharacterDelete(character: BaseCharacter) {
         viewModel.deleteCharacter(character, sortDescending)
+    }
+
+    override fun onItemSelected(id: Long) {
+        navigator?.add(CharDetailsFragment.newInstance(id))
     }
 
 }
