@@ -8,6 +8,7 @@ import co.zsmb.rainbowcake.navigation.extensions.applyArgs
 import co.zsmb.rainbowcake.navigation.extensions.requireLong
 import co.zsmb.rainbowcake.navigation.navigator
 import com.z80h3x.kezd_kov.R
+import com.z80h3x.kezd_kov.data.generic.BaseCharacter
 import kotlinx.android.synthetic.main.fragment_char_details.*
 
 class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetailsViewModel> {
@@ -49,7 +50,17 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
         charDetailsBackButton.setOnClickListener {
             navigator?.pop()
         }
-
+        charDetailsSaveButton.setOnClickListener {
+            val character = BaseCharacter(
+                id = characterId,
+                cloudId = cloudId,
+                name = charDetailsName.text.toString(),
+                description = charDetailsDescription.text.toString(),
+                initiative = charDetailsInitiative.text.toString().toInt(),
+                modifier = charDetailsModifier.text.toString().toInt()
+            )
+            viewModel.updateCharacter(character)
+        }
     }
 
     override fun onStart() {

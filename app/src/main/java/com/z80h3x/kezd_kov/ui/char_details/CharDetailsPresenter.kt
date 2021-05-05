@@ -14,4 +14,7 @@ class CharDetailsPresenter @Inject constructor(
         characterInteractor.getCharacter(characterId)
     }
 
+    suspend fun updateCharacter(character: BaseCharacter) = withIOContext {
+        characterInteractor.insertCharacter(character)
+    }
 }
