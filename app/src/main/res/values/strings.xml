@@ -9,6 +9,7 @@
     <string name="radio_button_default">Default</string>
     <string name="radio_button_d_amp_d_api"><![CDATA[D&D API]]></string>
     <string name="radio_button_cloud_character">Cloud Character</string>
+    <string name="addCharPermissionShowRationale">Internet permission is needed to access DnD API</string>
     <string name="addCharLabelName">Name:</string>
     <string name="addCharLabelInitiative">Initiative:</string>
     <string name="addCharLabelPriority">Priority:</string>

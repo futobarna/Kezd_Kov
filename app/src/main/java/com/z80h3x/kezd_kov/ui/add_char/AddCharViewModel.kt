@@ -21,4 +21,8 @@ class AddCharViewModel @Inject constructor(
         }
     }
 
+    fun getMonsterNames() = execute {
+        viewState = MonsterNamesReady(addCharPresenter.getMonsterNames())
+    }
+
 }

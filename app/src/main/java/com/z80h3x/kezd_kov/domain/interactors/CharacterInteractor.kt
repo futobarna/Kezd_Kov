@@ -28,7 +28,7 @@ class CharacterInteractor @Inject constructor(
         diskDataSource.deleteCharacter(character)
     }
 
-    suspend fun getAllMonsters(): MonsterList {
+    suspend fun getAllMonsters(): MutableList<String> {
         return networkDataSource.getAllMonsters()
     }
 

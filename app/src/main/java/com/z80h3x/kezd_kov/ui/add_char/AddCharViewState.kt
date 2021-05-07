@@ -7,3 +7,7 @@ object Loading : AddCharViewState()
 object CharacterFailed : AddCharViewState()
 
 data class AddCharReady(val characterId: Long) : AddCharViewState()
+
+data class MonsterNamesReady(
+    val monsterNames: MutableList<String>
+) : AddCharViewState()

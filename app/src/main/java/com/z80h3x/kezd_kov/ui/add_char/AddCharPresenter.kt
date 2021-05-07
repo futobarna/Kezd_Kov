@@ -18,4 +18,8 @@ class AddCharPresenter @Inject constructor(
         return@withIOContext characterInteractor.insertCharacter(BaseCharacter(null, null, name, null, initiative, modifier))
     }
 
+    suspend fun getMonsterNames(): MutableList<String> = withIOContext{
+        return@withIOContext characterInteractor.getAllMonsters()
+    }
+
 }
