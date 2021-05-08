@@ -10,10 +10,11 @@ class AddCharViewModel @Inject constructor(
     fun createCharacter(
         name: String,
         initiative: Int,
-        modifier: Int
+        modifier: Int,
+        description: String?
     ) = execute {
         viewState = Loading
-        val id = addCharPresenter.createCharacter(name, initiative, modifier)
+        val id = addCharPresenter.createCharacter(name, initiative, modifier, description)
         viewState = if (id != null){
             AddCharReady(id)
         } else {
@@ -22,7 +23,13 @@ class AddCharViewModel @Inject constructor(
     }
 
     fun getMonsterNames() = execute {
+        viewState = Loading
         viewState = MonsterNamesReady(addCharPresenter.getMonsterNames())
+    }
+
+    fun getMonster(name: String) = execute {
+        viewState = Loading
+        viewState = MonsterReady(addCharPresenter.getMonster(name))
     }
 
 }

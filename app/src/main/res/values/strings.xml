@@ -26,4 +26,5 @@
     <string name="invalid_number_field_error">Write a valid number</string>
     <string name="add_char_fragment_something_went_wrong">Something went wrong, please try again</string>
     <string name="char_details_save">Save</string>
+    <string name="add_char_dnd_api_hint">When using DnD API, Initiative and Priority are filled automatically</string>
 </resources>

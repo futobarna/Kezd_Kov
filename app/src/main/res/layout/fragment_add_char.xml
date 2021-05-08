@@ -152,29 +152,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCharName" />
 
+    <TextView
+        android:id="@+id/addCharDnDAPIHint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:visibility="gone"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:text="@string/add_char_dnd_api_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCharName" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/addCharButtonBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierAllowsGoneWidgets="true"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="addCharInitiative,addCharDnDAPIHint"/>
+
     <Button
         android:id="@+id/addCharCancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="261dp"
         android:layout_marginEnd="@dimen/margin_extra_large"
         android:layout_marginBottom="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
         android:text="@string/buttonCancel"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCharPriority" />
+        app:layout_constraintTop_toBottomOf="@+id/addCharButtonBarrier" />
 
     <Button
         android:id="@+id/addCharOkButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_extra_large"
-        android:layout_marginTop="261dp"
         android:layout_marginBottom="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
         android:text="@string/buttonOk"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCharInitiative" />
+        app:layout_constraintTop_toBottomOf="@+id/addCharButtonBarrier" />
 
     <TextView
         android:id="@+id/textViewCharacterFailed"

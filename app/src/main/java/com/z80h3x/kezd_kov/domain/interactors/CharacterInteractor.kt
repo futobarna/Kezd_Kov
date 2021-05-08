@@ -32,7 +32,7 @@ class CharacterInteractor @Inject constructor(
         return networkDataSource.getAllMonsters()
     }
 
-    suspend fun getMonsterByName(monsterName: String): Monster {
+    suspend fun getMonsterByName(monsterName: String): BaseCharacter {
         return networkDataSource.getMonsterByName(monsterName)
     }
 

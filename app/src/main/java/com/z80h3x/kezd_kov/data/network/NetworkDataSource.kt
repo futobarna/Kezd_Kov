@@ -7,6 +7,7 @@ import com.z80h3x.kezd_kov.data.network.models.Character
 import com.z80h3x.kezd_kov.data.network.models.Monster
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.floor
 
 @Singleton
 class NetworkDataSource @Inject constructor(
@@ -22,8 +23,12 @@ class NetworkDataSource @Inject constructor(
         return monsterNames
     }
 
-    suspend fun getMonsterByName(monsterName: String): Monster {
-        return dnd5eAPI.getMonsterByName(monsterName)
+    suspend fun getMonsterByName(monsterName: String): BaseCharacter {
+        val monster = dnd5eAPI.getMonsterByName(monsterName)
+        return BaseCharacter(id = null, cloudId = null, name = monster.name!!,
+                description = monster.createDescription(), initiative = null,
+                modifier = floor((monster.dexterity!! - 10) / 2.0).toInt()
+        )
     }
 
     suspend fun getAllCharacters(): Array<BaseCharacter> {
