@@ -17,7 +17,7 @@ import javax.inject.Singleton
 class NetworkModule {
 
     companion object {
-        private const val SERVER_URL = "http://www.dnd5eapi.co/"
+        private const val SERVER_URL = "https://www.dnd5eapi.co/"
     }
 
     @Provides

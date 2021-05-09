@@ -12,27 +12,27 @@ class CharacterInteractor @Inject constructor(
         private val diskDataSource: DiskDataSource,
         private val networkDataSource: NetworkDataSource
 ) {
-    suspend fun getCharacterList(): MutableList<RoomCharacter>{
+    suspend fun getCharacterList(): MutableList<BaseCharacter>{
         return diskDataSource.getCharacterList()
     }
 
-    suspend fun getCharacter(characterId: Long): RoomCharacter{
+    suspend fun getCharacter(characterId: Long): BaseCharacter{
         return diskDataSource.getCharacter(characterId)
     }
 
-    suspend fun insertCharacter(character: RoomCharacter): Long?{
+    suspend fun insertCharacter(character: BaseCharacter): Long?{
         return diskDataSource.insertCharacter(character)
     }
 
-    suspend fun deleteCharacter(character: RoomCharacter){
+    suspend fun deleteCharacter(character: BaseCharacter){
         diskDataSource.deleteCharacter(character)
     }
 
-    suspend fun getAllMonsters(): MonsterList {
+    suspend fun getAllMonsters(): MutableList<String> {
         return networkDataSource.getAllMonsters()
     }
 
-    suspend fun getMonsterByName(monsterName: String): Monster {
+    suspend fun getMonsterByName(monsterName: String): BaseCharacter {
         return networkDataSource.getMonsterByName(monsterName)
     }
 

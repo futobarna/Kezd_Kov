@@ -1,26 +1,34 @@
 package com.z80h3x.kezd_kov.data.network
 
-import android.content.Context
 import com.z80h3x.kezd_kov.data.generic.BaseCharacter
 import com.z80h3x.kezd_kov.data.network.apis.DnD5eAPI
 import com.z80h3x.kezd_kov.data.network.apis.MockCharacterApi
 import com.z80h3x.kezd_kov.data.network.models.Character
 import com.z80h3x.kezd_kov.data.network.models.Monster
-import com.z80h3x.kezd_kov.data.network.models.MonsterList
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.floor
 
 @Singleton
 class NetworkDataSource @Inject constructor(
     private val dnd5eAPI: DnD5eAPI,
     private val mockCharacterApi: MockCharacterApi,
 ){
-    suspend fun getAllMonsters(): MonsterList{
-        return dnd5eAPI.getAllMonsters()
+    suspend fun getAllMonsters(): MutableList<String>{
+        val allMonsters = dnd5eAPI.getAllMonsters()
+        val monsterNames : MutableList<String> = arrayListOf()
+        allMonsters.results?.forEach {
+            it.name?.let { it1 -> monsterNames.add(it1) }
+        }
+        return monsterNames
     }
 
-    suspend fun getMonsterByName(monsterName: String): Monster {
-        return dnd5eAPI.getMonsterByName(monsterName)
+    suspend fun getMonsterByName(monsterName: String): BaseCharacter {
+        val monster = dnd5eAPI.getMonsterByName(monsterName)
+        return BaseCharacter(id = null, cloudId = null, name = monster.name!!,
+                description = monster.createDescription(), initiative = null,
+                modifier = floor((monster.dexterity!! - 10) / 2.0).toInt()
+        )
     }
 
     suspend fun getAllCharacters(): Array<BaseCharacter> {

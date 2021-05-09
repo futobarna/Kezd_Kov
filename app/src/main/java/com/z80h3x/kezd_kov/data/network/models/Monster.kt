@@ -74,6 +74,13 @@ data class Monster (
     val legendary_actions: Array<LegendaryAction>? = null,
     val url: String? = null
 ) {
-
+    fun createDescription(): String {
+        val st = if (subtype != null) {
+            " ($subtype)"
+        } else {
+            ""
+        }
+        return "$size $type$st, $alignment\nArmor Class $armor_class\nHit Points $hit_points ($hit_dice)"
+    }
 }
 

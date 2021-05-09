@@ -78,6 +78,17 @@
         android:contentDescription="@string/add_character"
         android:backgroundTint="@color/colorPrimary"/>
 
+    <ProgressBar
+        android:id="@+id/initListProgressBar"
+        android:layout_width="@dimen/progress_bar_size"
+        android:layout_height="@dimen/progress_bar_size"
+        android:indeterminateTint="@color/lightGray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/initListToolbar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
