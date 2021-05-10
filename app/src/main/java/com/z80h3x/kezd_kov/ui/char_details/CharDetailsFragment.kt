@@ -32,7 +32,7 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
     }
 
     private var characterId: Long = 0
-    private var cloudId: Long? = null
+    private var cloudId: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

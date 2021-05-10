@@ -31,16 +31,13 @@ class NetworkDataSource @Inject constructor(
         )
     }
 
-    suspend fun getAllCharacters(): Array<BaseCharacter> {
+    suspend fun getAllCharacters(): MutableList<String> {
         val chars = mockCharacterApi.getAllCharacters()
-        val array : MutableList<BaseCharacter> = arrayListOf()
+        val list : MutableList<String> = arrayListOf()
         chars.forEach {
-            array.add(
-                BaseCharacter(id = null, cloudId = it.id, name = it.name,
-                    description = it.description, initiative = null, modifier = null)
-            )
+            list.add(it.name)
         }
-        return array.toTypedArray()
+        return list
     }
 
     suspend fun addNewCharacter(character: BaseCharacter) : Long {
@@ -55,13 +52,13 @@ class NetworkDataSource @Inject constructor(
         )
     }
 
-    suspend fun getCharacterById(characterId: Long): BaseCharacter {
+    suspend fun getCharacterById(characterId: String): BaseCharacter {
         val char = mockCharacterApi.getCharacterById(characterId)
         return BaseCharacter(id = null, cloudId = characterId, name = char.name,
             description = char.description, initiative = null, modifier = null)
     }
 
-    suspend fun deleteCharacter(characterId: Long) {
+    suspend fun deleteCharacter(characterId: String) {
         mockCharacterApi.deleteCharacter(characterId)
     }
 }

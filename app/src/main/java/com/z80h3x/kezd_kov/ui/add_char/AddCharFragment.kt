@@ -7,6 +7,7 @@ import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import co.zsmb.rainbowcake.navigation.navigator
 import com.z80h3x.kezd_kov.R
+import com.z80h3x.kezd_kov.data.generic.BaseCharacter
 import kotlinx.android.synthetic.main.fragment_add_char.*
 import java.util.*
 
@@ -16,6 +17,7 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
     override fun getViewResource() = R.layout.fragment_add_char
 
     private var monsterNames: MutableList<String>? = null
+    private var cloudNames: MutableList<String>? = null
     private lateinit var nameSuggestionAdapter : ArrayAdapter<String>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,6 +60,13 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
                     addCharInitiative.visibility = View.VISIBLE
                     addCharTextPriority.visibility = View.VISIBLE
                     addCharTextInitiative.visibility = View.VISIBLE
+                    nameSuggestionAdapter.clear()
+                    if (cloudNames == null){
+                        viewModel.getCloudNames()
+                    } else {
+                        nameSuggestionAdapter.addAll(cloudNames!!)
+                        nameSuggestionAdapter.notifyDataSetChanged()
+                    }
                 }
             }
         }
@@ -95,7 +104,7 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
                     val initiative: Int = initiativeString.toInt()
                     val priority: Int = priorityString.toInt()
 
-                    viewModel.createCharacter(charName, initiative, priority, null)
+                    viewModel.createCharacter(charName, initiative, priority, null, null)
                 }
                 radioButtonAPI.id -> {
                     if (charName.isEmpty()) {
@@ -104,6 +113,28 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
                         return@setOnClickListener
                     }
                     viewModel.getMonster(charName.toLowerCase(Locale.getDefault()).replace(' ', '-').replace("\'",""))
+                }
+                radioButtonCloud.id -> {
+                    if (charName.isEmpty()) {
+                        addCharName.error = getString(R.string.empty_character_name_error)
+                        addCharName.requestFocus()
+                        return@setOnClickListener
+                    }
+                    if (initiativeString.isEmpty() || initiativeString.toIntOrNull() == null) {
+                        addCharInitiative.error = getString(R.string.invalid_number_field_error)
+                        addCharInitiative.requestFocus()
+                        return@setOnClickListener
+                    }
+                    if (priorityString.isEmpty() || priorityString.toIntOrNull() == null) {
+                        addCharPriority.error = getString(R.string.invalid_number_field_error)
+                        addCharPriority.requestFocus()
+                        return@setOnClickListener
+                    }
+                    viewModel.getCloudCharacters(charName
+                            .toLowerCase(Locale.getDefault())
+                            .replace(' ', '-')
+                            .replace("\'", "")
+                    )
                 }
             }
         }
@@ -117,7 +148,36 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
             is AddCharReady -> characterReady()
             is MonsterNamesReady -> monsterNamesReady(viewState)
             is MonsterReady -> monsterReady(viewState)
+            is CloudNamesReady -> cloudNamesReady(viewState)
+            is CloudCharReady -> cloudCharReady(viewState)
         }
+    }
+
+    private fun cloudCharReady(viewState: CloudCharReady) {
+        addCharProgressBar.visibility = View.GONE
+        val initiativeString: String = addCharInitiative.text.toString().trim()
+        val priorityString: String = addCharPriority.text.toString().trim()
+        if (initiativeString.isEmpty() || initiativeString.toIntOrNull() == null) {
+            addCharInitiative.error = getString(R.string.invalid_number_field_error)
+            addCharInitiative.requestFocus()
+            return
+        }
+        if (priorityString.isEmpty() || priorityString.toIntOrNull() == null) {
+            addCharPriority.error = getString(R.string.invalid_number_field_error)
+            addCharPriority.requestFocus()
+            return
+        }
+        val initiative: Int = initiativeString.toInt()
+        val priority: Int = priorityString.toInt()
+        viewModel.createCharacter(viewState.character.name, initiative, priority,
+                viewState.character.description, viewState.character.cloudId)
+    }
+
+    private fun cloudNamesReady(viewState: CloudNamesReady) {
+        addCharProgressBar.visibility = View.GONE
+        nameSuggestionAdapter.addAll(viewState.cloudNames)
+        nameSuggestionAdapter.notifyDataSetChanged()
+        cloudNames = viewState.cloudNames
     }
 
     private fun monsterReady(viewState: MonsterReady) {
@@ -126,7 +186,8 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
         viewModel.createCharacter(viewState.character.name,
                 roll + viewState.character.modifier!!,
                 viewState.character.modifier,
-                viewState.character.description
+                viewState.character.description,
+                null
         )
     }
 

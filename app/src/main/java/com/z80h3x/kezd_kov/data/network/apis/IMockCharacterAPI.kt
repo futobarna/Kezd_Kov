@@ -19,11 +19,11 @@ interface IMockCharacterAPI {
 
     @GET("/character/{characterId}")
     suspend fun getCharacterById(
-        @Path("characterId") characterId: Long
+        @Path("characterId") characterId: String
     ) : Character
 
     @DELETE("/character/{characterId}")
     suspend fun deleteCharacter(
-        @Path("characterId") characterId: Long
+        @Path("characterId") characterId: String
     )
 }

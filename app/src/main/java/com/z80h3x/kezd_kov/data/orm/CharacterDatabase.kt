@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.z80h3x.kezd_kov.data.orm.daos.CharacterDao
 import com.z80h3x.kezd_kov.data.orm.entities.RoomCharacter
 
-@Database(entities = [RoomCharacter::class], exportSchema = true, version = 1)
+@Database(entities = [RoomCharacter::class], version = 2)
 abstract class CharacterDatabase : RoomDatabase() {
     abstract fun characterDao(): CharacterDao
 }

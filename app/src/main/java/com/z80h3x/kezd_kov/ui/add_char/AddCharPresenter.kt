@@ -14,9 +14,12 @@ class AddCharPresenter @Inject constructor(
         name: String,
         initiative: Int,
         modifier: Int,
-        description: String?
+        description: String?,
+        cloudId: String?
     ): Long? = withIOContext {
-        return@withIOContext characterInteractor.insertCharacter(BaseCharacter(null, null, name, description, initiative, modifier))
+        return@withIOContext characterInteractor.insertCharacter(
+                BaseCharacter(null, cloudId, name, description, initiative, modifier)
+        )
     }
 
     suspend fun getMonsterNames(): MutableList<String> = withIOContext{
@@ -27,4 +30,11 @@ class AddCharPresenter @Inject constructor(
         return@withIOContext characterInteractor.getMonsterByName(name)
     }
 
+    suspend fun getCloudNames(): MutableList<String> = withIOContext {
+        return@withIOContext characterInteractor.getAllCloudCharacters()
+    }
+
+    suspend fun getCloudChar(name: String) : BaseCharacter = withIOContext {
+        return@withIOContext characterInteractor.getCloudCharacterById(name)
+    }
 }
