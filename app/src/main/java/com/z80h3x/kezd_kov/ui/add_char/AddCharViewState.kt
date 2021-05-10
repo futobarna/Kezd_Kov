@@ -10,8 +10,10 @@ object CharacterFailed : AddCharViewState()
 
 data class AddCharReady(val characterId: Long) : AddCharViewState()
 
-data class MonsterNamesReady(
-    val monsterNames: MutableList<String>
-) : AddCharViewState()
+data class MonsterNamesReady(val monsterNames: MutableList<String>) : AddCharViewState()
 
 data class MonsterReady(val character: BaseCharacter) : AddCharViewState()
+
+data class CloudNamesReady(val cloudNames: MutableList<String>) : AddCharViewState()
+
+data class CloudCharReady(val character: BaseCharacter) : AddCharViewState()

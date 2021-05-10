@@ -20,7 +20,7 @@ package com.z80h3x.kezd_kov.data.network.models
  */
 data class Character (
     val name: String,
-    val id: Long? = null,
+    val id: String? = null,
     val description: String? = null
 ) {
 

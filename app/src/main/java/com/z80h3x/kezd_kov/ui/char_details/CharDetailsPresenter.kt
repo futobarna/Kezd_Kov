@@ -17,4 +17,15 @@ class CharDetailsPresenter @Inject constructor(
     suspend fun updateCharacter(character: BaseCharacter) = withIOContext {
         characterInteractor.insertCharacter(character)
     }
+
+    suspend fun saveToCloud(character: BaseCharacter): String = withIOContext {
+        if (character.cloudId == null)
+            return@withIOContext characterInteractor.addNewCloudCharacter(character)
+        else
+            return@withIOContext characterInteractor.updateCloudCharacter(character)
+    }
+
+    suspend fun deleteFromCloud(characterId: String) = withIOContext {
+        characterInteractor.deleteCloudCharacter(characterId)
+    }
 }

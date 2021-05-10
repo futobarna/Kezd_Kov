@@ -11,10 +11,11 @@ class AddCharViewModel @Inject constructor(
         name: String,
         initiative: Int,
         modifier: Int,
-        description: String?
+        description: String?,
+        cloudId: String?
     ) = execute {
         viewState = Loading
-        val id = addCharPresenter.createCharacter(name, initiative, modifier, description)
+        val id = addCharPresenter.createCharacter(name, initiative, modifier, description, cloudId)
         viewState = if (id != null){
             AddCharReady(id)
         } else {
@@ -30,6 +31,16 @@ class AddCharViewModel @Inject constructor(
     fun getMonster(name: String) = execute {
         viewState = Loading
         viewState = MonsterReady(addCharPresenter.getMonster(name))
+    }
+
+    fun getCloudNames() = execute {
+        viewState = Loading
+        viewState = CloudNamesReady(addCharPresenter.getCloudNames())
+    }
+
+    fun getCloudCharacters(name: String) = execute {
+        viewState = Loading
+        viewState = CloudCharReady(addCharPresenter.getCloudChar(name))
     }
 
 }
