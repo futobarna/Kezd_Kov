@@ -10,12 +10,12 @@ interface IMockCharacterAPI {
     @POST("/character")
     suspend fun addNewCharacter(
         @Body character: Character
-    ) : Long
+    ) : String
 
     @PUT("/character")
     suspend fun updateCharacter(
         @Body character: Character
-    )
+    ) : String
 
     @GET("/character/{characterId}")
     suspend fun getCharacterById(

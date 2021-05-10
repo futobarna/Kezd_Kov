@@ -40,12 +40,12 @@ class CharacterInteractor @Inject constructor(
         return networkDataSource.getAllCharacters()
     }
 
-    suspend fun addNewCloudCharacter(character: BaseCharacter) : Long {
+    suspend fun addNewCloudCharacter(character: BaseCharacter) : String {
         return networkDataSource.addNewCharacter(character)
     }
 
-    suspend fun updateCloudCharacter(character: BaseCharacter) {
-        networkDataSource.updateCharacter(character)
+    suspend fun updateCloudCharacter(character: BaseCharacter) : String {
+        return networkDataSource.updateCharacter(character)
     }
 
     suspend fun getCloudCharacterById(characterId: String): BaseCharacter {

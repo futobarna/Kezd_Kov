@@ -13,13 +13,14 @@ class MockCharacterApi @Inject constructor() : IMockCharacterAPI {
         )
     }
 
-    override suspend fun addNewCharacter(character: Character) : Long {
+    override suspend fun addNewCharacter(character: Character) : String {
         delay(1000)
-        return 1
+        return "salazar"
     }
 
-    override suspend fun updateCharacter(character: Character) {
+    override suspend fun updateCharacter(character: Character) : String {
         delay(1000)
+        return "salazar"
     }
 
     override suspend fun getCharacterById(characterId: String): Character {

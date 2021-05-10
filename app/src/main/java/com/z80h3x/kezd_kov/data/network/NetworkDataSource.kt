@@ -40,14 +40,14 @@ class NetworkDataSource @Inject constructor(
         return list
     }
 
-    suspend fun addNewCharacter(character: BaseCharacter) : Long {
+    suspend fun addNewCharacter(character: BaseCharacter) : String {
         return mockCharacterApi.addNewCharacter(
             Character(id = null, name = character.name, description = character.description)
         )
     }
 
-    suspend fun updateCharacter(character: BaseCharacter) {
-        mockCharacterApi.updateCharacter(
+    suspend fun updateCharacter(character: BaseCharacter) : String {
+        return mockCharacterApi.updateCharacter(
             Character(id = character.cloudId, name = character.name, description = character.description)
         )
     }
