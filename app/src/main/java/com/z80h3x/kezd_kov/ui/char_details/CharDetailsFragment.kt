@@ -32,7 +32,7 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
     }
 
     private var characterId: Long = 0
-    private var cloudId: Long? = null
+    private var cloudId: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,6 +60,20 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
             )
             viewModel.updateCharacter(character)
         }
+        charDetailsCloudButton.setOnClickListener {
+            val character = BaseCharacter(
+                    cloudId = cloudId,
+                    name = charDetailsName.text.toString(),
+                    description = charDetailsDescription.text.toString(),
+                    modifier = null,
+                    initiative = null,
+                    id = null
+            )
+            viewModel.saveToCloud(character)
+        }
+        charDetailsCloudDeleteButton.setOnClickListener {
+            viewModel.deleteFromCloud(cloudId!!)
+        }
     }
 
     override fun onStart() {
@@ -72,19 +86,65 @@ class CharDetailsFragment : RainbowCakeFragment<CharDetailsViewState, CharDetail
         when (viewState) {
             is CharDetailsReady -> showCharDetailsReady(viewState)
             is Loading -> showLoading()
+            is CharCloudReady -> showCloudReady(viewState)
+            is CloudDeleteReady -> showCloudDeleteReady()
+            is Updated -> showUpdated()
         }
+    }
+
+    private fun showUpdated() {
+        charDetailsProgressBar.visibility = View.GONE
+        charDetailsSaveButton.visibility = View.VISIBLE
+        charDetailsCloudButton.visibility = View.VISIBLE
+
+        if (cloudId == null)
+            charDetailsCloudDeleteButton.visibility = View.GONE
+        else
+            charDetailsCloudDeleteButton.visibility = View.VISIBLE
+    }
+
+    private fun showCloudDeleteReady() {
+        cloudId = null
+        val character = BaseCharacter(
+                id = characterId,
+                cloudId = cloudId,
+                name = charDetailsName.text.toString(),
+                description = charDetailsDescription.text.toString(),
+                initiative = charDetailsInitiative.text.toString().toInt(),
+                modifier = charDetailsModifier.text.toString().toInt()
+        )
+        viewModel.updateCharacter(character)
+    }
+
+    private fun showCloudReady(viewState: CharCloudReady) {
+        cloudId = viewState.cloudId
+        val character = BaseCharacter(
+                id = characterId,
+                cloudId = cloudId,
+                name = charDetailsName.text.toString(),
+                description = charDetailsDescription.text.toString(),
+                initiative = charDetailsInitiative.text.toString().toInt(),
+                modifier = charDetailsModifier.text.toString().toInt()
+        )
+        viewModel.updateCharacter(character)
     }
 
     private fun showLoading() {
         charDetailsProgressBar.visibility = View.VISIBLE
         charDetailsSaveButton.visibility = View.GONE
         charDetailsCloudButton.visibility = View.GONE
+        charDetailsCloudDeleteButton.visibility = View.GONE
     }
 
     private fun showCharDetailsReady(viewState: CharDetailsReady) {
         charDetailsProgressBar.visibility = View.GONE
         charDetailsSaveButton.visibility = View.VISIBLE
         charDetailsCloudButton.visibility = View.VISIBLE
+
+        if (viewState.character.cloudId == null)
+            charDetailsCloudDeleteButton.visibility = View.GONE
+        else
+            charDetailsCloudDeleteButton.visibility = View.VISIBLE
 
         charDetailsName.text = viewState.character.name
         charDetailsInitiative.setText(viewState.character.initiative.toString())

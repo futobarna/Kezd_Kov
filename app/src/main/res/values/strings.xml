@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kezdeményzés Követő</string>
+    <string name="app_name">Kezdeményezés Követő</string>
     <string name="next_turn">Next Turn</string>
     <string name="sort_list">Sort List</string>
     <string name="add_character">Add Character</string>

@@ -8,26 +8,27 @@ class MockCharacterApi @Inject constructor() : IMockCharacterAPI {
     override suspend fun getAllCharacters(): Array<Character> {
         delay(500)
         return arrayOf(
-            Character(name = "Salazar", id = 0, description = "human fighter"),
-            Character(name = "Gary", id = 0, description = "dwarf bloodhunter")
+            Character(name = "Salazar", id = "salazar", description = "human fighter"),
+            Character(name = "Gary", id = "gary", description = "dwarf bloodhunter")
         )
     }
 
-    override suspend fun addNewCharacter(character: Character) : Long {
+    override suspend fun addNewCharacter(character: Character) : String {
         delay(1000)
-        return 1
+        return "salazar"
     }
 
-    override suspend fun updateCharacter(character: Character) {
+    override suspend fun updateCharacter(character: Character) : String {
         delay(1000)
+        return "salazar"
     }
 
-    override suspend fun getCharacterById(characterId: Long): Character {
+    override suspend fun getCharacterById(characterId: String): Character {
         delay(500)
-        return Character(name = "Salazar", id = 0, description = "human fighter")
+        return Character(name = "Salazar", id = "salazar", description = "human fighter")
     }
 
-    override suspend fun deleteCharacter(characterId: Long) {
+    override suspend fun deleteCharacter(characterId: String) {
         delay(1000)
     }
 

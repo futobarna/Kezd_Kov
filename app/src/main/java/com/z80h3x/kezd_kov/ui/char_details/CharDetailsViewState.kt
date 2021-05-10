@@ -8,3 +8,9 @@ sealed class CharDetailsViewState
 object Loading : CharDetailsViewState()
 
 data class CharDetailsReady(val character: BaseCharacter) : CharDetailsViewState()
+
+data class CharCloudReady(val cloudId: String) : CharDetailsViewState()
+
+object CloudDeleteReady: CharDetailsViewState()
+
+object Updated: CharDetailsViewState()

@@ -36,23 +36,23 @@ class CharacterInteractor @Inject constructor(
         return networkDataSource.getMonsterByName(monsterName)
     }
 
-    suspend fun getAllCharacters(): Array<BaseCharacter> {
+    suspend fun getAllCloudCharacters(): MutableList<String> {
         return networkDataSource.getAllCharacters()
     }
 
-    suspend fun addNewCharacter(character: BaseCharacter) : Long {
+    suspend fun addNewCloudCharacter(character: BaseCharacter) : String {
         return networkDataSource.addNewCharacter(character)
     }
 
-    suspend fun updateCharacter(character: BaseCharacter) {
-        networkDataSource.updateCharacter(character)
+    suspend fun updateCloudCharacter(character: BaseCharacter) : String {
+        return networkDataSource.updateCharacter(character)
     }
 
-    suspend fun getCharacterById(characterId: Long): BaseCharacter {
+    suspend fun getCloudCharacterById(characterId: String): BaseCharacter {
         return networkDataSource.getCharacterById(characterId)
     }
 
-    suspend fun deleteCharacter(characterId: Long) {
+    suspend fun deleteCloudCharacter(characterId: String) {
         networkDataSource.deleteCharacter(characterId)
     }
 }
