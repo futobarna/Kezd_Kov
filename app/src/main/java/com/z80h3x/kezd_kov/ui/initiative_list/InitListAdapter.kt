@@ -23,7 +23,7 @@ class InitListAdapter(
     private var highlightPosition: Int = 0
 
     interface Listener {
-        fun onCharacterDelete(character: BaseCharacter)
+        fun onCharacterDelete(character: BaseCharacter, position: Int)
         fun onItemSelected(id: Long)
     }
 
@@ -57,7 +57,7 @@ class InitListAdapter(
         }
 
         holder.characterDelete.setOnClickListener {
-            listener?.onCharacterDelete(item)
+            listener?.onCharacterDelete(item, position)
         }
     }
 
@@ -79,7 +79,7 @@ class InitListAdapter(
     }
 
     fun iterateHighlight(){
-        highlightPosition = if (highlightPosition + 1 == itemCount) {
+        highlightPosition = if (highlightPosition + 1 >= itemCount) {
             0
         } else {
             highlightPosition + 1
@@ -96,5 +96,9 @@ class InitListAdapter(
 
     fun changeHighlightToOpposite() {
         highlightPosition = itemCount - highlightPosition - 1
+    }
+
+    fun decreaseHighlightPosition(){
+        highlightPosition--
     }
 }

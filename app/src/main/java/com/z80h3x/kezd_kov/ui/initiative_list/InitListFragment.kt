@@ -73,17 +73,21 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
         setupList()
         initListProgressBar.visibility = View.GONE
         adapter.submitList(viewState.characters)
+        Handler(Looper.myLooper()!!).postDelayed({
+            adapter.notifyDataSetChanged()}, 100)
     }
 
     private fun showLoading() {
         initListProgressBar.visibility = View.VISIBLE
     }
 
-    override fun onCharacterDelete(character: BaseCharacter) {
-        if (character.id == adapter.getItemId(adapter.getHighlightPosition())) {
+    override fun onCharacterDelete(character: BaseCharacter, position: Int) {
+        if (adapter.getHighlightPosition() > position)
+            adapter.decreaseHighlightPosition()
+        /*else if (character.id == adapter.getItemId(adapter.getHighlightPosition())) {
             adapter.iterateHighlight()
             adapter.notifyDataSetChanged()
-        }
+        }*/
         viewModel.deleteCharacter(character, sortDescending)
     }
 
