@@ -8,7 +8,7 @@ class MockCharacterDao @Inject constructor() : IMockCharacterDao {
     override suspend fun getAll(): List<RoomCharacter> {
         return listOf(
                 RoomCharacter(
-                        id = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,
+                        id = 1,
                         cloudId = null,
                         name = "Salazar",
                         description = "human fighter",
@@ -16,7 +16,7 @@ class MockCharacterDao @Inject constructor() : IMockCharacterDao {
                         modifier = 2
                 ),
                 RoomCharacter(
-                        id = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,
+                        id = 2,
                         cloudId = null,
                         name = "Gary",
                         description = "dwarf bloodhunter",
@@ -28,7 +28,7 @@ class MockCharacterDao @Inject constructor() : IMockCharacterDao {
 
     override suspend fun getCharacter(characterId: Long): RoomCharacter {
         return RoomCharacter(
-                id = UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE,
+                id = 1,
                 cloudId = null,
                 name = "Salazar",
                 description = "human fighter",
@@ -38,7 +38,7 @@ class MockCharacterDao @Inject constructor() : IMockCharacterDao {
     }
 
     override suspend fun insert(character: RoomCharacter): Long? {
-        return UUID.randomUUID().mostSignificantBits and Long.MAX_VALUE
+        return 2
     }
 
     override suspend fun delete(character: RoomCharacter) {}

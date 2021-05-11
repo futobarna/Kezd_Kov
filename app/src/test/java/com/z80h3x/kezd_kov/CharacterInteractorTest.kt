@@ -60,5 +60,23 @@ class CharacterInteractorTest {
         Assert.assertEquals(id, "salazar")
     }
 
+    @Test
+    fun `test getting characters from disk are as expected`() = runBlockingTest {
+        val chars = charInteractor.getCharacterList()
+        Assert.assertEquals(chars.size, 2)
+    }
 
+    @Test
+    fun `test getting single character from disk is as expected`() = runBlockingTest {
+        val char = charInteractor.getCharacter(1)
+        Assert.assertEquals(char.description, "human fighter")
+    }
+
+    @Test
+    fun `test inserting character to disk is as expected`() = runBlockingTest {
+        val id = charInteractor.insertCharacter(
+            BaseCharacter(null, null, "Gary",
+            "dwarf bloodhunter", 8, 2))
+        Assert.assertEquals(id, 2.toLong())
+    }
 }
