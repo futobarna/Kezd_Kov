@@ -60,6 +60,7 @@ class AddCharFragment : RainbowCakeFragment<AddCharViewState, AddCharViewModel>(
                     addCharInitiative.visibility = View.VISIBLE
                     addCharTextPriority.visibility = View.VISIBLE
                     addCharTextInitiative.visibility = View.VISIBLE
+                    addCharDnDAPIHint.visibility = View.GONE
                     nameSuggestionAdapter.clear()
                     if (cloudNames == null){
                         viewModel.getCloudNames()
