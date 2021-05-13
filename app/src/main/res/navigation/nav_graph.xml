@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_init_list"
+    tools:keep="@navigation/nav_graph">
+
+    <fragment
+        android:id="@+id/nav_char_details"
+        android:name="com.z80h3x.kezd_kov.ui.char_details.CharDetailsFragment"
+        tools:layout="@layout/fragment_char_details"
+        android:label="CharDetailsFragment" >
+        <argument
+            android:name="characterId"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_nav_char_details_to_nav_init_list"
+            app:destination="@id/nav_init_list" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_init_list"
+        android:name="com.z80h3x.kezd_kov.ui.initiative_list.InitListFragment"
+        tools:layout="@layout/fragment_init_list"
+        android:label="InitListFragment" >
+        <action
+            android:id="@+id/action_nav_init_list_to_nav_char_details"
+            app:destination="@id/nav_char_details" />
+        <action
+            android:id="@+id/action_nav_init_list_to_nav_add_char"
+            app:destination="@id/nav_add_char" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_add_char"
+        android:name="com.z80h3x.kezd_kov.ui.add_char.AddCharFragment"
+        tools:layout="@layout/fragment_add_char"
+        android:label="AddCharFragment" >
+        <action
+            android:id="@+id/action_nav_add_char_to_nav_init_list"
+            app:destination="@id/nav_init_list" />
+    </fragment>
+</navigation>

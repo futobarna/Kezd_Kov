@@ -1,6 +1,30 @@
 <resources>
-    <string name="app_name">Kezd_Kov</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">Kezdeményezés Követő</string>
+    <string name="next_turn">Next Turn</string>
+    <string name="sort_list">Sort List</string>
+    <string name="add_character">Add Character</string>
+    <string name="character_description">Character Description</string>
+    <string name="modifier_hint">+2</string>
+    <string name="initiative_hint">12</string>
+    <string name="radio_button_default">Default</string>
+    <string name="radio_button_d_amp_d_api"><![CDATA[D&D API]]></string>
+    <string name="radio_button_cloud_character">Cloud Character</string>
+    <string name="addCharPermissionShowRationale">Internet permission is needed to access DnD API</string>
+    <string name="addCharLabelName">Name:</string>
+    <string name="addCharLabelInitiative">Initiative:</string>
+    <string name="addCharLabelPriority">Priority:</string>
+    <string name="addCharHintName">Character Name</string>
+    <string name="addCharHintInitiative">Initiative</string>
+    <string name="addCharHintPriority">Priority</string>
+    <string name="buttonCancel">Cancel</string>
+    <string name="buttonOk">OK</string>
+    <string name="init_list_toolbar_text">Turn Order</string>
+    <string name="char_details_toolbar_title">Character Details</string>
+    <string name="back">Back</string>
+    <string name="cloud_upload">Cloud Upload</string>
+    <string name="empty_character_name_error">Write a character name</string>
+    <string name="invalid_number_field_error">Write a valid number</string>
+    <string name="add_char_fragment_something_went_wrong">Something went wrong, please try again</string>
+    <string name="char_details_save">Save</string>
+    <string name="add_char_dnd_api_hint">When using DnD API, Initiative and Priority are filled automatically</string>
 </resources>

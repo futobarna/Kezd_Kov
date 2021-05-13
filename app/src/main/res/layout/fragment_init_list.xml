@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.initiative_list.InitListFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/initListToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/init_list_toolbar_text"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="24sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/initListNextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/initListToolbar"
+        tools:listitem="@layout/fragment_character_row" />
+
+    <ImageButton
+        android:id="@+id/initListSortButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/initListNextButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_sort_24"
+        android:contentDescription="@string/sort_list"
+        android:backgroundTint="@color/colorPrimary"/>
+
+    <ImageButton
+        android:id="@+id/initListNextButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toEndOf="@id/initListSortButton"
+        app:layout_constraintEnd_toStartOf="@id/initListAddButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_baseline_navigate_next_24"
+        tools:layout_editor_absoluteX="181dp"
+        android:contentDescription="@string/next_turn"
+        android:backgroundTint="@color/colorAccent"/>
+
+    <ImageButton
+        android:id="@+id/initListAddButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/initListNextButton"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        android:contentDescription="@string/add_character"
+        android:backgroundTint="@color/colorPrimary"/>
+
+    <ProgressBar
+        android:id="@+id/initListProgressBar"
+        android:layout_width="@dimen/progress_bar_size"
+        android:layout_height="@dimen/progress_bar_size"
+        android:indeterminateTint="@color/lightGray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/initListToolbar" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
