@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import androidx.core.os.bundleOf
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SimpleItemAnimator
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import co.zsmb.rainbowcake.navigation.navigator
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.z80h3x.kezd_kov.R
 import com.z80h3x.kezd_kov.data.generic.BaseCharacter
 import com.z80h3x.kezd_kov.ui.add_char.AddCharFragment
 import com.z80h3x.kezd_kov.ui.char_details.CharDetailsFragment
 import kotlinx.android.synthetic.main.fragment_init_list.*
+import java.util.*
 
 class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewModel>(), InitListAdapter.Listener {
 
@@ -23,11 +21,13 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
     override fun getViewResource() = R.layout.fragment_init_list
 
     private lateinit var adapter: InitListAdapter
+    private lateinit var mFirebaseAnalytics: FirebaseAnalytics
 
     private var sortDescending: Boolean = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(requireContext())
         adapter = InitListAdapter(requireContext())
         setupButtons()
     }
@@ -37,6 +37,7 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
             navigator?.add(AddCharFragment())
         }
         initListNextButton.setOnClickListener {
+            //throw RuntimeException("Test Crash")
             adapter.iterateHighlight()
             adapter.notifyDataSetChanged()
         }
@@ -71,6 +72,11 @@ class InitListFragment : RainbowCakeFragment<InitListViewState, InitListViewMode
 
     private fun showInitListPage(viewState: InitListReady) {
         setupList()
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, UUID.randomUUID().toString())
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, viewState.characters[0].name)
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "name")
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
         initListProgressBar.visibility = View.GONE
         adapter.submitList(viewState.characters)
         Handler(Looper.myLooper()!!).postDelayed({
