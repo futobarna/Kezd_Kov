@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "908514782341",
+    "project_id": "kezd-kov",
+    "storage_bucket": "kezd-kov.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908514782341:android:c364a278a83ac4bba68dec",
+        "android_client_info": {
+          "package_name": "com.z80h3x.kezd_kov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908514782341-e8oeijt3njuturql1cidf4mjs1159adp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJUJ7XTn9ZxiAAQhN_09mundBwyPdPPSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908514782341-e8oeijt3njuturql1cidf4mjs1159adp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
